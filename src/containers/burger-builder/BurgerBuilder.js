@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import Burger from '../../components/burger/Burger';
 import BuildControls from '../../components/burger/build-controls/BuildControls';
+import Modal from '../../components/ui/modal/ModalSheet';
+import OrderSummary from '../../components/burger/order-summary/OrderSummary';
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -13,9 +15,9 @@ class BurgerBuilder extends Component {
   state = {
     ingredients: {
       salad: 0,
-      bacon: 2,
+      bacon: 1,
       cheese: 0,
-      meat: 1,
+      meat: 0,
     },
     totalPrice: 4,
   };
@@ -52,10 +54,14 @@ class BurgerBuilder extends Component {
   render() {
     return (
       <Fragment>
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients} />
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           moreClick={this.addIngredient}
           lessClick={this.removeIngredient}
+          price={this.state.totalPrice}
         />
       </Fragment>
     );
