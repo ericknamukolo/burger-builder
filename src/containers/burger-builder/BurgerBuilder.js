@@ -20,8 +20,12 @@ class BurgerBuilder extends Component {
       meat: 0,
     },
     totalPrice: 4,
+    purchasing: false,
   };
 
+  purchase = () => {
+    this.setState({ purchasing: true });
+  };
   addIngredient = (type) => {
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
@@ -54,14 +58,17 @@ class BurgerBuilder extends Component {
   render() {
     return (
       <Fragment>
-        <Modal>
-          <OrderSummary ingredients={this.state.ingredients} />
-        </Modal>
+        {this.state.purchasing ? (
+          <Modal>
+            <OrderSummary ingredients={this.state.ingredients} />
+          </Modal>
+        ) : null}
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           moreClick={this.addIngredient}
           lessClick={this.removeIngredient}
           price={this.state.totalPrice}
+          purchase={this.purchase}
         />
       </Fragment>
     );

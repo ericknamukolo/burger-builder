@@ -26,7 +26,9 @@ const buildControls = (props) => {
           />
         );
       })}
-      <button className='OrderButton'>ORDER NOW</button>
+      <button className='OrderButton' onClick={props.purchase}>
+        ORDER NOW
+      </button>
     </div>
   );
 };
