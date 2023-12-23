@@ -16,7 +16,9 @@ const orderSummary = (props) => {
       <button onClick={props.close}>Close</button>
       <p>A delicious burger with the following ingredients:</p>
       <ul>{ingredientSummary}</ul>
-      <p>Continue to checkout</p>
+      <p>Continue to checkout?</p>
+      <button>Yes</button>
+      <button onClick={props.close}>No</button>
     </Fragment>
   );
 };
