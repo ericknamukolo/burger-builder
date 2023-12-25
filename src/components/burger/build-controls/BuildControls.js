@@ -13,7 +13,7 @@ const buildControls = (props) => {
   return (
     <div className='BuildControls'>
       <strong>
-        <p>Price: {'ZMW' + ' ' + props.price.toFixed(1)}</p>
+        <p>Price: {'ZMW ' + props.price.toFixed(1)}</p>
       </strong>
       {controls.map((control, i) => {
         return (
